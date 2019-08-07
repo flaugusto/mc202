@@ -1,0 +1,10 @@
+# Editor configs
+.idea
+# Test files (SuSy)
+arq*.*
+*.pgm
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
