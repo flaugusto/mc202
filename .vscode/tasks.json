@@ -5,6 +5,7 @@
             "label": "gcc build active file",
             "command": "/bin/gcc",
             "args": [
+                "-std=c99",
                 "-Wall",
                 "-Werror",
                 "-lm",
