@@ -1,5 +1,8 @@
-# Editor configs
-.idea
+
+*
+!/**/
+!*.*
+
 # Test files (SuSy)
 arq*.*
 *.pgm
@@ -7,4 +10,4 @@ arq*.*
 __pycache__/
 *.py[cod]
 *$py.class
-
+*.pdf
