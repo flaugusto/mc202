@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX 1000
+#define MAX 100
+#define PUSH_TO_MATRIX matrix[i][j] = arr[x]; x++;
 
 void readArr(double arr[], int arrlen)
 {
@@ -11,26 +12,43 @@ void readArr(double arr[], int arrlen)
     }
 }
 
-void genSnail(double arr[], int arrlen, double matrix[][MAX], int m, int n)
+void genSnail(double arr[], double matrix[][MAX], int m, int n)
 {
-    int x = 0, i, j;
-    for (i = 0; i < m; i++)
-        for (j = 0; j < n; j++)
-        {
-            matrix[i][j] = arr[x];
-            x++;
-        }
-        
     
+    int k = 1, lim = 0, x = 0;
+    int i, j;
+    while (x < m*n) {
+        i = m - k;
+        j = n - k;
+        // Sobe (subtrai na linha i)
+        for (; i >= lim; i--) {
+            PUSH_TO_MATRIX;
+        }
+        // Esquerda (subtrai na coluna j)
+        for (; j >= lim; j--) {
+            PUSH_TO_MATRIX;
+        }
+        // Desce (incrementa na linha i)
+        for (; i <= m - k+1; i++) {
+            PUSH_TO_MATRIX;
+        }
+        // Direita (incrementa na coluna j)
+        for (; j <= n - k+1; j++) {
+            PUSH_TO_MATRIX;
+        }
+        k++;
+        lim++;
+    }
 }
 
 void printMatrix(double matrix[][MAX], int cols, int lines)
 {
     int i, j;
-    for (i = 0; i < lines-1; i++)
-        for (j = 0; j < cols; j++)
+    for (i = 0; i < lines; i++) {
+        for (j = 0; j < cols-1; j++)
             printf("%lf ", matrix[i][j]);
-    printf("%lf", matrix[i][j]);
+        printf("%lf\n", matrix[i][j]);
+    }
 }
 
 int main()
@@ -38,13 +56,13 @@ int main()
     // Declaração incial e leitura da ordem e tamanho do vetor
     int m, n;
     scanf("%d %d", &m, &n);
-    // Leitura do vetor de números
+    // Tamanho do vetor
     int len = m * n;
-    double nums[len];
+    double nums[MAX];
     readArr(nums, len);
     // Geração da matriz caracol
-    double snail[len][len];
-    genSnail(nums, len, snail, m, n);
+    double snail[MAX][MAX];
+    genSnail(nums, snail, m, n);
     // Exibição
     printMatrix(snail, m, n);
 
