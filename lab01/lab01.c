@@ -14,30 +14,29 @@ void readArr(double arr[], int arrlen)
 
 void genSnail(double arr[], double matrix[][MAX], int m, int n)
 {
-    
-    int k = 1, lim = 0, x = 0;
+
+    int k = 1, x = 0;
     int i, j;
     while (x < m*n) {
         i = m - k;
         j = n - k;
         // Sobe (subtrai na linha i)
-        for (; i >= lim; i--) {
+        for (; i > k -1; i--) {
             PUSH_TO_MATRIX;
         }
         // Esquerda (subtrai na coluna j)
-        for (; j >= lim; j--) {
+        for (; j > k -1; j--) {
             PUSH_TO_MATRIX;
         }
         // Desce (incrementa na linha i)
-        for (; i <= m - k+1; i++) {
+        for (; i < m - k+1; i++) {
             PUSH_TO_MATRIX;
         }
         // Direita (incrementa na coluna j)
-        for (; j <= n - k+1; j++) {
+        for (; j < n - k+1; j++) {
             PUSH_TO_MATRIX;
         }
         k++;
-        lim++;
     }
 }
 

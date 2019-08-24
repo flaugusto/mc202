@@ -18,7 +18,12 @@ build: $(OBJECTS)
 clean:
 	rm -f *.o
 
-
+test: build clean
+	if [ ! -d testes_abertos ] ; then \
+		echo "\033[1;31mDiretório 'testes_abertos' não encontrado!\033[0m" ; \
+		exit 1 ; \
+	fi ; \
+	./$(LAB) < testes_abertos/arq01.in ; \
 ###############################################################################################
 ####################### Suporte para testar o programa usando os testes #######################
 ###############################################################################################
