@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #define MAX 100
 #define PUSH_TO_MATRIX matrix[i][j] = arr[x]; x++;
+#define BREAK if (x >= m*n) break;
 
 void readArr(double arr[], int arrlen)
 {
@@ -21,26 +22,29 @@ void genSnail(double arr[], double matrix[][MAX], int m, int n)
         i = m - k;
         j = n - k;
         // Sobe (subtrai na linha i)
-        for (; i > k -1; i--) {
+        for (; i > k - 1; i--) {
             PUSH_TO_MATRIX;
         }
+        BREAK;
         // Esquerda (subtrai na coluna j)
-        for (; j > k -1; j--) {
+        for (; j > k - 1; j--) {
             PUSH_TO_MATRIX;
         }
+        BREAK;
         // Desce (incrementa na linha i)
-        for (; i < m - k+1; i++) {
+        for (; i < m - k; i++) {
             PUSH_TO_MATRIX;
         }
+        BREAK;
         // Direita (incrementa na coluna j)
-        for (; j < n - k+1; j++) {
+        for (; j < n - k; j++) {
             PUSH_TO_MATRIX;
         }
         k++;
     }
 }
 
-void printMatrix(double matrix[][MAX], int cols, int lines)
+void printMatrix(double matrix[][MAX], int lines, int cols)
 {
     int i, j;
     for (i = 0; i < lines; i++) {
@@ -65,5 +69,5 @@ int main()
     // Exibição
     printMatrix(snail, m, n);
 
-    return EXIT_SUCCESS;
+    return 0;
 }
