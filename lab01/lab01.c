@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX 100
+#define MAX 150
 #define PUSH_TO_MATRIX matrix[i][j] = arr[x]; x++;
 #define BREAK if (x >= m*n) break;
 
@@ -40,6 +40,12 @@ void genSnail(double arr[], double matrix[][MAX], int m, int n)
         for (; j < n - k; j++) {
             PUSH_TO_MATRIX;
         }
+        if ((m * n) - x == 1) {
+            i--;
+            j--;
+            PUSH_TO_MATRIX;
+            break;
+        }
         k++;
     }
 }
@@ -49,9 +55,10 @@ void printMatrix(double matrix[][MAX], int lines, int cols)
     int i, j;
     for (i = 0; i < lines; i++) {
         for (j = 0; j < cols-1; j++)
-            printf("%lf ", matrix[i][j]);
-        printf("%lf\n", matrix[i][j]);
+            printf("%.1lf ", matrix[i][j]);
+        printf("%.1lf\n", matrix[i][j]);
     }
+    printf("\n");
 }
 
 int main()

@@ -3,24 +3,18 @@
         {
             "type": "shell",
             "label": "gcc build active file",
-            "command": "/bin/gcc",
+            "command": "/usr/bin/make",
             "args": [
-                "-std=c99",
-                "-Wall",
-                "-Werror",
-                "-lm",
-                "-g",
-                "${file}",
-                "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "build",
+                "clean"
             ],
             "options": {
-                "cwd": "/bin"
+                "cwd": "${fileDirname}"
             },
             "problemMatcher": {
                 "owner": "cpp",
                 "fileLocation": [
-                    "${workspaceFolder}"
+                    "${fileDirname}"
                 ],
                 "pattern": {
                     "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
