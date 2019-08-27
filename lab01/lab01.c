@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX 150
+#define MAX 1000
 #define PUSH_TO_MATRIX matrix[i][j] = arr[x]; x++;
 #define BREAK if (x >= m*n) break;
 
@@ -58,7 +58,7 @@ void printMatrix(double matrix[][MAX], int lines, int cols)
             printf("%.1lf ", matrix[i][j]);
         printf("%.1lf\n", matrix[i][j]);
     }
-    printf("\n");
+    printf("\n"); // remover depois
 }
 
 int main()

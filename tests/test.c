@@ -1,9 +1,26 @@
 #include <stdio.h>
+#define MAX 10
 
-int main () {
-    int m = 4, k = 1, i = 0;
-    for (; i < m - k; i++) {
-        printf("%d\n", i);
+void printMatrix(double matrix[][MAX], int cols, int lines)
+{
+    int i, j;
+    for (i = 0; i < lines-1; i++)
+        for (j = 0; j < cols; j++)
+            printf("%lf ", matrix[i][j]);
+    printf("%lf", matrix[i][j]);
+}
+
+void readArr(double arr[], int arrlen)
+{
+    int i;
+    for (i = 0; i < arrlen; i++)
+    {
+        scanf("%lf", &arr[i]);
     }
-    printf("%d\n", i);
+}
+
+int main() 
+{
+    
+    return 0;
 }
