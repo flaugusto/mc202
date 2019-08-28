@@ -63,10 +63,31 @@ int main()
 void processar_aumento(Professor professores[], Aluno alunos[], int m, int n)
 {
 
-   /** ************************************************************************
-    *               ATENÇÃO: É preciso implementar esta função!               *
-    *********************************************************************** **/
-
+    char disciplina[MAXCHAR_CODIGO];
+    for (int i = 0; i < m; i++)
+    {
+      obter_disciplina(professores[i], disciplina);
+      float menor = 10;
+      for (int j = 0; j < n; j++)
+      {
+         if (validar_matricula(alunos[j], disciplina)) 
+         {
+            float nota = obter_desempenho(alunos[j]);
+            if (nota < menor)
+               menor = nota;
+         }
+      }
+      float aumento = 0;
+      if (menor == 10.0)
+         aumento = 0.15;
+      else if (menor >= 9.0)
+         aumento = 0.1;
+      else if (menor >= 8.5)
+         aumento = 0.05;
+      
+      professores[i] = aplicar_aumento(professores[i], aumento);
+    }
+    
     // Esta função não devem acessar diretamente os campos de uma TAD (i.e.,
     // os campos das estruturas do Professor ou Aluno, tais como 'disciplina').
 

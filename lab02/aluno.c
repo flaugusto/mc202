@@ -1,29 +1,30 @@
+#include <string.h>
 #include "aluno.h"
 
 Aluno criar_aluno(int registro_academico, float desempenho)
 {
-   /** ************************************************************************
-    *               ATENÇÃO: É preciso implementar esta função!               *
-    *********************************************************************** **/
+   Aluno novo;
+   novo.registro_academico = registro_academico;
+   novo.desempenho = desempenho;
+   novo.num_disciplinas = 0;
+   return novo;
 }
 
 Aluno adicionar_disciplina(Aluno aluno, const char disciplina[])
 {
-   /** ************************************************************************
-    *               ATENÇÃO: É preciso implementar esta função!               *
-    *********************************************************************** **/
+   int len = aluno.num_disciplinas;
+   strcpy(aluno.disciplinas[len], disciplina);
+   aluno.num_disciplinas = len + 1;
+   return aluno;
+
 }
 
 float obter_desempenho(Aluno aluno)
-{
-   /** ************************************************************************
-    *               ATENÇÃO: É preciso implementar esta função!               *
-    *********************************************************************** **/
+{   
+   return aluno.desempenho;
 }
 
-bool validar_matricula(Aluno aluno, const char disciplina[])
+int validar_matricula(Aluno aluno, const char disciplina[])
 {
-   /** ************************************************************************
-    *               ATENÇÃO: É preciso implementar esta função!               *
-    *********************************************************************** **/
+   
 }
