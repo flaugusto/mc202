@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX 1000
+#define MAX 10001
+#define MAX_COLS 100
 #define PUSH_TO_MATRIX matrix[i][j] = arr[x]; x++;
 #define BREAK if (x >= m*n) break;
 
@@ -13,7 +14,7 @@ void readArr(double arr[], int arrlen)
     }
 }
 
-void genSnail(double arr[], double matrix[][MAX], int m, int n)
+void genSnail(double arr[], double matrix[][MAX_COLS], int m, int n)
 {
 
     int k = 1, x = 0;
@@ -23,21 +24,25 @@ void genSnail(double arr[], double matrix[][MAX], int m, int n)
         j = n - k;
         // Sobe (subtrai na linha i)
         for (; i > k - 1; i--) {
+            BREAK;
             PUSH_TO_MATRIX;
         }
         BREAK;
         // Esquerda (subtrai na coluna j)
         for (; j > k - 1; j--) {
+            BREAK;
             PUSH_TO_MATRIX;
         }
         BREAK;
         // Desce (incrementa na linha i)
         for (; i < m - k; i++) {
+            BREAK;
             PUSH_TO_MATRIX;
         }
         BREAK;
         // Direita (incrementa na coluna j)
         for (; j < n - k; j++) {
+            BREAK;
             PUSH_TO_MATRIX;
         }
         if ((m * n) - x == 1) {
@@ -50,7 +55,7 @@ void genSnail(double arr[], double matrix[][MAX], int m, int n)
     }
 }
 
-void printMatrix(double matrix[][MAX], int lines, int cols)
+void printMatrix(double matrix[][MAX_COLS], int lines, int cols)
 {
     int i, j;
     for (i = 0; i < lines; i++) {
@@ -58,7 +63,6 @@ void printMatrix(double matrix[][MAX], int lines, int cols)
             printf("%.1lf ", matrix[i][j]);
         printf("%.1lf\n", matrix[i][j]);
     }
-    printf("\n"); // remover depois
 }
 
 int main()
@@ -71,7 +75,7 @@ int main()
     double nums[MAX];
     readArr(nums, len);
     // Geração da matriz caracol
-    double snail[MAX][MAX];
+    double snail[MAX_COLS][MAX_COLS];
     genSnail(nums, snail, m, n);
     // Exibição
     printMatrix(snail, m, n);
