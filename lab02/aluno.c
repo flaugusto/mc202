@@ -26,5 +26,13 @@ float obter_desempenho(Aluno aluno)
 
 int validar_matricula(Aluno aluno, const char disciplina[])
 {
+   int len = aluno.num_disciplinas, matriculado = 0;
+   for (int i = 0; i < len ; i++)
+   {
+      if (strcmp(disciplina, aluno.disciplinas[i]) == 0) {
+         matriculado = 1;
+      }
+   }
+   return matriculado;
    
 }
