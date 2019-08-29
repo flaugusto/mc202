@@ -1,10 +1,14 @@
+#include <string.h>
 #include "professor.h"
 
 Professor criar_professor(const char nome[], float salario, const char disciplina[])
 {
-   /** ************************************************************************
-    *               ATENÇÃO: É preciso implementar esta função!               *
-    *********************************************************************** **/
+   Professor novo;
+   strcpy(novo.nome, nome);
+   novo.salario = salario;
+   strcpy(novo.disciplina, disciplina);
+   return novo;
+
 }
 
 Professor aplicar_aumento(Professor professor, float porcentagem)
@@ -15,21 +19,15 @@ Professor aplicar_aumento(Professor professor, float porcentagem)
 
 void obter_nome(Professor professor, char nome[])
 {
-   /** ************************************************************************
-    *               ATENÇÃO: É preciso implementar esta função!               *
-    *********************************************************************** **/
+   strcpy(professor.nome, nome);
 }
 
 float obter_salario(Professor professor)
 {
-   /** ************************************************************************
-    *               ATENÇÃO: É preciso implementar esta função!               *
-    *********************************************************************** **/
+   return professor.salario;
 }
 
 void obter_disciplina(Professor professor, char disciplina[])
 {
-   /** ************************************************************************
-    *               ATENÇÃO: É preciso implementar esta função!               *
-    *********************************************************************** **/
+   strcpy(professor.disciplina, disciplina);
 }
