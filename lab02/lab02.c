@@ -60,21 +60,18 @@ int main()
  * conforme especificado no enunciado da tarefa.
  */
 
-void processar_aumento(Professor professores[], Aluno alunos[], int m, int n)
-{
-
+void processar_aumento(Professor professores[], Aluno alunos[], int m, int n) {
     char disciplina[MAXCHAR_CODIGO];
-    for (int i = 0; i < m; i++)
-    {
+    for (int i = 0; i < m; i++) {
       obter_disciplina(professores[i], disciplina);
       float menor = 10;
-      for (int j = 0; j < n; j++)
-      {
-         if (validar_matricula(alunos[j], disciplina)) 
-         {
+      
+      for (int j = 0; j < n; j++) {
+         if (validar_matricula(alunos[j], disciplina)) {
             float nota = obter_desempenho(alunos[j]);
-            if (nota < menor)
+            if (nota < menor) {
                menor = nota;
+            }
          }
       }
       float aumento = 0;
@@ -87,17 +84,4 @@ void processar_aumento(Professor professores[], Aluno alunos[], int m, int n)
       
       professores[i] = aplicar_aumento(professores[i], aumento);
     }
-    
-    // Esta função não devem acessar diretamente os campos de uma TAD (i.e.,
-    // os campos das estruturas do Professor ou Aluno, tais como 'disciplina').
-
-    // Para a implementação desta função você deverá fazer a chamada de funções
-    // que operação sobre os TADs (conforme os protótipos definidos nos arquivos
-    // de cabeçalho).
-
-    // Para a bonificação salarial, deverá chamar a função 'aplicar_aumento'.
-    // Obs.: a função devolve uma variável do tipo Professor na qual aplicou-se
-    // a bonificação salarial. No entanto, ESTÁ PROIBIDO A IMPRESSÃO DA SAÍDA
-    // NO ESCOPO DESTA FUNÇÃO. Você deverá sobrescrever a variável do vetor
-    // 'professores' que corresponde ao professor com a bonificação salarial.
 }
