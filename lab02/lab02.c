@@ -64,7 +64,7 @@ void processar_aumento(Professor professores[], Aluno alunos[], int m, int n) {
     char disciplina[MAXCHAR_CODIGO];
     for (int i = 0; i < m; i++) {
       obter_disciplina(professores[i], disciplina);
-      float menor = 10;
+      float menor = 11;
       
       for (int j = 0; j < n; j++) {
          if (validar_matricula(alunos[j], disciplina)) {
@@ -74,8 +74,11 @@ void processar_aumento(Professor professores[], Aluno alunos[], int m, int n) {
             }
          }
       }
+
       float aumento = 0;
-      if (menor == 10.0)
+      if (menor == 11.0) 
+         aumento = 0;
+      else if (menor == 10.0)
          aumento = 0.15;
       else if (menor >= 9.0)
          aumento = 0.1;
