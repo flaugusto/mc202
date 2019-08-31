@@ -79,7 +79,7 @@ void processar_aumento(Professor professores[], Aluno alunos[], int m, int n) {
       if (menor == 11.0) 
          aumento = 0;
       else if (menor == 10.0)
-         aumento = 0.15;
+         aumento = 0.20;
       else if (menor >= 9.0)
          aumento = 0.1;
       else if (menor >= 8.5)
