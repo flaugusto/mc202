@@ -1,22 +1,20 @@
 #include "livro.h"
+#include <string.h>
 
 Livro criar_livro(const char* titulo, Data emprestimo)
 {
-   /** ************************************************************************
-    *               ATENÇÃO: É preciso implementar esta função!               *
-    *********************************************************************** **/
+   Livro novo;
+   strcpy(novo.titulo, titulo);
+   novo.emprestimo = emprestimo;
+   return novo;
 }
 
 Data obter_data_emprestimo(const Livro* livro)
 {
-   /** ************************************************************************
-    *               ATENÇÃO: É preciso implementar esta função!               *
-    *********************************************************************** **/
+   return livro->emprestimo;
 }
 
 const char* obter_titulo(const Livro* livro)
 {
-   /** ************************************************************************
-    *               ATENÇÃO: É preciso implementar esta função!               *
-    *********************************************************************** **/
+   return livro->titulo;
 }
