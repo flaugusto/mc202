@@ -3,7 +3,10 @@
 #include "livro.h"
 #include "leitor.h"
 
-Leitor* le_leitores(Leitor* leitores, int n) 
+/**
+ * Esta função lê do teclado e cadastra os leitores ativos
+*/
+void le_leitores(Leitor* lista, int n) 
 {
    char nome[MAXCHAR_LNOME];
    int e, id;
@@ -14,16 +17,14 @@ Leitor* le_leitores(Leitor* leitores, int n)
       for (int j = 0; j < e; j++)
       {
          scanf("%d ", &id);
-         // Empréstimo
+         // Leitura de operações
          if (id < 0) {
             id = id * (-1);
             registrar_restituicao(&novo, id);
          } else registrar_devolucao(&novo, id);
-      }      
+      }
+      lista[i] = novo;
    }
-   
-   
-   
 }
 
 int main()
@@ -36,6 +37,12 @@ int main()
    
    int m,n;
    scanf("%d %d ", &m, &n);
+
+   leitores = malloc(n * sizeof(Leitor));
+   livros = malloc(m * sizeof(Livro));
+
+   le_leitores(leitores);
+   le_livros(livros);
 
 
 
