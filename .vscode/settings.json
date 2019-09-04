@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "leitor.h": "c",
-        "livro.h": "c"
+        "livro.h": "c",
+        "data.h": "c"
     }
 }
