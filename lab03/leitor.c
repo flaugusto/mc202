@@ -34,7 +34,7 @@ void registrar_restituicao(Leitor* leitor, int i)
 void registrar_devolucao(Leitor* leitor, int i)
 {
    int len = leitor->num_devolucoes;
-   leitor->restituicoes[len] = i;
+   leitor->devolucoes[len] = i;
    leitor->num_devolucoes++;
 }
 
