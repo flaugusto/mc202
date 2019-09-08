@@ -10,17 +10,26 @@ void printMatrix(double matrix[][MAX], int cols, int lines)
     printf("%lf", matrix[i][j]);
 }
 
-void readArr(double arr[], int arrlen)
+void readArr(int arr[], int arrlen)
 {
     int i;
     for (i = 0; i < arrlen; i++)
     {
-        scanf("%lf", &arr[i]);
+        scanf("%d", &arr[i]);
     }
+}
+
+void printArr(int arr[], int n)
+{
+    int i, j;
+    for (i = 0; i < n; i++)
+        printf("%d", arr[i]);
 }
 
 int main() 
 {
-    
+    int test[5];
+    readArr(test, 5);
+    printArr(test, 5);
     return 0;
 }
