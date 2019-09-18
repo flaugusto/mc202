@@ -5,6 +5,7 @@
 .PHONY: build clean
 
 LAB = lab04
+TEST = 06
 
 OBJECTS = $(patsubst %.c, %.o, $(wildcard *.c))
 GFLAGS  = -std=c99 -Wall -Werror
@@ -24,7 +25,14 @@ test:
 		echo "\033[1;31mDiretório 'testes_abertos' não encontrado!\033[0m" ; \
 		exit 1 ; \
 	fi ; \
-	./$(LAB) < testes_abertos/arq06.in ; \
+	./$(LAB) < testes_abertos/arq$(TEST).in ; \
+
+check:
+	if [ ! -d testes_abertos ] ; then \
+		echo "\033[1;31mDiretório 'testes_abertos' não encontrado!\033[0m" ; \
+		exit 1 ; \
+	fi ; \
+	valgrind --leak-check=full --error-exitcode=1 ./$(LAB) < testes_abertos/arq$(TEST).in
 
 ###############################################################################################
 ####################### Suporte para testar o programa usando os testes #######################
