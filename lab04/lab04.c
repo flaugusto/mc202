@@ -2,14 +2,6 @@
 #include <stdlib.h>
 #include "mapa.h"
 
-#define M_MIN        '.' // Marcador do caminho p/ o minotauro
-#define M_ESP        ',' //    ''         ''       a espada
-#define ESPADA       'S' // Char que representa a espada
-#define MINOTAURO    'M' // ''      ''          o minotauro
-#define ENT          'E' // ''      ''          a entrada
-#define PAREDE       '#' // ''      ''          a parede
-#define SOL          '*' // ''      ''          o caminho solução
-
 /** Função recursiva que acha um caminho até algo
  * oq -> Char que se deve procurar por
  * onde -> o mapa do labirinto pra procurar
@@ -41,17 +33,21 @@ int achar(char oq, char** onde, int i, int j, char marcador, int *x, int *y) {
       return 0;
    else if (onde[i][j] == ENT)
       return 0;
+   else if (onde[i][j] == SOL_P)
+      return 0;
    else if (onde[i][j] == MINOTAURO)
       return 0;
    else if (onde[i][j] == ESPADA)
       return 0;
+   
 
    /** Caso geral
     * Tenta achar nas direções seguindo a ordem
     * Se não achar em nenhuma delas, marca que já passou e retorna FALSO
     * */
-   
-   onde[i][j] = marcador;
+   if (onde[i][j] == SOL)
+      onde[i][j] = SOL_P;
+   else onde[i][j] = marcador;
    // Direita
    if (achar(oq, onde, i, dir, marcador, x, y)) {
       onde[i][j] = SOL;
@@ -113,7 +109,7 @@ int main() {
          return 1; // Não achou
    
    // Preparação da saída e exibição
-   limpar_mapa(lab, m, n, M_ESP, M_MIN);
+   limpar_mapa(lab, m, n, M_ESP, M_MIN, SOL_P);
    imprimir_mapa(lab, m);
 
    // Liberação dos vetores
