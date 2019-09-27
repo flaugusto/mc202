@@ -28,7 +28,6 @@ void destroy_list(p_node list) {
 
 void print(p_node list) {
     if (list != NULL) {
-        printf("heap:\n");
         printf("%d", list->data.start);
         printf("%d", list->data.size);
         print(list->next);
