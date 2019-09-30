@@ -4,12 +4,12 @@
 int main () {
 
     p_node list = create_list();
-    Blopck
+    Block test = create_block(0,8);
 
-    list = insert(list, 12);
-    list = insert(list, 2);
-    list = insert(list, 3);
-    list = insert(list, 70);
+    list = insert(list, test);
+    list = insert(list, create_block(9,10));
+    list = insert(list, create_block(19,1));
+    list = insert(list, create_block(20,5));
 
     printf("heap:\n");
     print(list);

@@ -1,7 +1,29 @@
 #include <stdlib.h>
 #include <stdio.h>
-
 #include "lista.h"
+
+Block create_block(int start, int size) {
+    Block new_block;
+    new_block.size = size;
+    new_block.start = start;
+    return new_block;
+}
+
+int get_size(Block block) {
+    return block.size;
+}
+
+int get_start(Block block) {
+    return block.start;
+}
+
+void set_size(Block* block, int size) {
+    block->size = size;
+}
+
+void set_start(Block* block, int start) {
+    block->start = start;
+}
 
 p_node create_list() {
     return NULL;
@@ -28,8 +50,8 @@ void destroy_list(p_node list) {
 
 void print(p_node list) {
     if (list != NULL) {
-        printf("%d", list->data.start);
-        printf("%d", list->data.size);
         print(list->next);
+        printf("%d ", get_start(list->data));
+        printf("%d\n", get_size(list->data));
     }
 }
