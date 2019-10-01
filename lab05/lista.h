@@ -19,6 +19,7 @@ void set_start(int start, Block* block);
 typedef struct Node {
     Block data;
     struct Node* next;
+    struct Node* prev;
 } Node;
 
 typedef struct Node* p_node;

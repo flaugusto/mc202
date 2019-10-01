@@ -38,6 +38,8 @@ p_node push(Block x, p_node list) {
     }
     node->data = x;
     node->next = list;
+    node->prev = NULL;
+    list->prev = node;
     return node;
 }
 
