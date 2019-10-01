@@ -17,11 +17,11 @@ int get_start(Block block) {
     return block.start;
 }
 
-void set_size(Block* block, int size) {
+void set_size(int size, Block* block) {
     block->size = size;
 }
 
-void set_start(Block* block, int start) {
+void set_start(int start, Block* block) {
     block->start = start;
 }
 
@@ -29,7 +29,7 @@ p_node create_list() {
     return NULL;
 }
 
-p_node insert(p_node list, Block x) {
+p_node push(Block x, p_node list) {
     p_node node;
     node = malloc(sizeof(Node));
     if (node == NULL) {

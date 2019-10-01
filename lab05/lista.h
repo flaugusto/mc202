@@ -12,9 +12,9 @@ int get_size(Block block);
 
 int get_start(Block block);
 
-void set_size(Block* block, int size);
+void set_size(int size, Block* block);
 
-void set_start(Block* block, int start);
+void set_start(int start, Block* block);
 
 typedef struct Node {
     Block data;
@@ -25,7 +25,9 @@ typedef struct Node* p_node;
 
 p_node create_list();
 
-p_node insert(p_node list, Block x);
+p_node push(Block x, p_node list);
+
+p_node pop(Block x, p_node list);
 
 void destroy_list(p_node list);
 
