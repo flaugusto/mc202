@@ -34,6 +34,8 @@ check:
 	fi ; \
 	valgrind --leak-check=full --error-exitcode=1 ./$(LAB) < testes_abertos/arq$(TEST).in
 
+run_check:
+	valgrind --leak-check=full --error-exitcode=1 ./$(LAB)
 ###############################################################################################
 ####################### Suporte para testar o programa usando os testes #######################
 ###############################################################################################

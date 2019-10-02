@@ -1,46 +1,39 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "lista.h"
-
-Block create_block(int start, int size) {
-    Block new_block;
-    new_block.size = size;
-    new_block.start = start;
-    return new_block;
-}
-
-int get_size(Block block) {
-    return block.size;
-}
-
-int get_start(Block block) {
-    return block.start;
-}
-
-void set_size(int size, Block* block) {
-    block->size = size;
-}
-
-void set_start(int start, Block* block) {
-    block->start = start;
-}
+#include "heap.h"
 
 p_node create_list() {
     return NULL;
 }
 
-p_node push(Block x, p_node list) {
-    p_node node;
-    node = malloc(sizeof(Node));
-    if (node == NULL) {
+p_node* search_insertpos(Block x, p_node* head) {
+}
+
+p_node insert(Block x, p_node* head) {
+    
+    p_node new = create_node(x);
+    p_node* pos = search_insertpos(x, head);
+    1
+    2
+    3 
+    4 * verif se ins fim
+    
+    p_node new;
+    new = malloc(sizeof(Node));
+    if (new == NULL) {
         printf("Nao ha memoria suficiente!\n");
         exit(1);
     }
-    node->data = x;
-    node->next = list;
-    node->prev = NULL;
-    list->prev = node;
-    return node;
+    new->data = x;
+    new->next = *pos;
+    if (head == NULL) {
+        new->prev = head;
+        return new;
+    }
+    new->prev = (*pos)->prev;
+    *pos = new;
+    new->next->prev = new;
+    return head;
 }
 
 void destroy_list(p_node list) {

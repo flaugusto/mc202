@@ -2,6 +2,7 @@
     "files.associations": {
         "leitor.h": "c",
         "livro.h": "c",
-        "data.h": "c"
+        "data.h": "c",
+        "stdlib.h": "c"
     }
 }
