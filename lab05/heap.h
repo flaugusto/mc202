@@ -2,7 +2,7 @@
 
 /**
  * Definição do tipo Bloco
- * start -> representa a posição de início de um bloco de memória
+ * start -> representa a posição de início de um bloco de memória vazio
  * size -> quantidade de posições que este bloco representado possui
  * */
 typedef struct Block {

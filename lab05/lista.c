@@ -6,18 +6,7 @@ p_node create_list() {
     return NULL;
 }
 
-p_node* search_insertpos(Block x, p_node* head) {
-}
-
-p_node insert(Block x, p_node* head) {
-    
-    p_node new = create_node(x);
-    p_node* pos = search_insertpos(x, head);
-    1
-    2
-    3 
-    4 * verif se ins fim
-    
+p_node create_node(Block x) {
     p_node new;
     new = malloc(sizeof(Node));
     if (new == NULL) {
@@ -25,15 +14,29 @@ p_node insert(Block x, p_node* head) {
         exit(1);
     }
     new->data = x;
-    new->next = *pos;
+    new->prev = NULL;
+    new->next = NULL;
+    return new;
+}
+void insert_sorted(Block x, p_node head) {
+    p_node new = create_node(x);
     if (head == NULL) {
-        new->prev = head;
-        return new;
+        head = new;
+        return;
     }
-    new->prev = (*pos)->prev;
+    p_node pos = bestfit(x, head);
+    2
+    3 
+    4 * verif se ins fim
+
+    new->next = pos->next; // 1
+    new->prev = post; // 2
+    pos->next = new // 3
+    if (pos->next != NULL) {
+        new->next-prev = new // 4
+    }
     *pos = new;
     new->next->prev = new;
-    return head;
 }
 
 void destroy_list(p_node list) {

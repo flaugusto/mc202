@@ -1,5 +1,6 @@
 #ifndef LISTA_H
 #define LISTA_H
+#include "heap.h"
 
 typedef struct Node {
     Block data;
@@ -10,21 +11,26 @@ typedef struct Node {
 typedef struct Node* p_node;
 
 /**
+ * Aloca um novo nó da lista
+ * */
+p_node create_node();
+
+/**
  * Cria uma nova lista vazia
  * */
 p_node create_list();
 
 /**
- * Insere um novo nó a partir da posição dada
+ * Insere um novo nó ordenado com base na posição do bloco
  * x -> dados a serem inseridos no nó
- * list -> ponteiro para o primeiro nó da lista
+ * head -> ponteiro para o primeiro nó da lista
  * Retorno: um ponteiro para o começo da lista com o novo nó inserido
  * */
-p_node insert(Block x, p_node* pos, p_node list);
+void insert_sorted(Block x, p_node head);
 
-p_node* search_insertpos();
+p_node bestfit(Block x, p_node head);
 
-p_node remove(Block x, p_node pos);
+p_node remove(Block x, p_node head);
 
 /**
  *  Libera a memeória da lista
