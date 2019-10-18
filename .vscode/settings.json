@@ -3,6 +3,8 @@
         "leitor.h": "c",
         "livro.h": "c",
         "data.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "heap.h": "c",
+        "lista.h": "c"
     }
 }

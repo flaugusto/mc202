@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "heap.h"
+#include "lista.h"
 
 p_node create_list() {
     return NULL;
@@ -8,7 +8,7 @@ p_node create_list() {
 
 p_node create_node(Block x) {
     p_node new;
-    new = malloc(sizeof(Node));
+    new = (sizeof(Node));
     if (new == NULL) {
         printf("Nao ha memoria suficiente!\n");
         exit(1);
@@ -18,26 +18,24 @@ p_node create_node(Block x) {
     new->next = NULL;
     return new;
 }
-void insert_sorted(Block x, p_node head) {
+
+
+p_node insert_sorted(Block x, p_node head) {
     p_node new = create_node(x);
     if (head == NULL) {
-        head = new;
-        return;
+        return new;
     }
-    p_node pos = bestfit(x, head);
-    2
-    3 
-    4 * verif se ins fim
+    p_node pos = head;
 
-    new->next = pos->next; // 1
-    new->prev = post; // 2
-    pos->next = new // 3
+    new->next = pos->next;
+    new->prev = pos;
     if (pos->next != NULL) {
-        new->next-prev = new // 4
+        new->next->prev = new;
     }
-    *pos = new;
-    new->next->prev = new;
+    pos->next = new;
+    return head;
 }
+
 
 void destroy_list(p_node list) {
     if (list != NULL) {

@@ -26,11 +26,11 @@ p_node create_list();
  * head -> ponteiro para o primeiro nó da lista
  * Retorno: um ponteiro para o começo da lista com o novo nó inserido
  * */
-void insert_sorted(Block x, p_node head);
+p_node insert_sorted(Block x, p_node head);
 
 p_node bestfit(Block x, p_node head);
 
-p_node remove(Block x, p_node head);
+p_node delete_sorted(Block x, p_node head);
 
 /**
  *  Libera a memeória da lista
