@@ -1,38 +1,25 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
+#include "io.h"
 #include "arvore.h"
 
-// p_node fill_tree(Data v) {
-
-// }
-
 int main() {
-   int m, num;
-   char buffer[100];
+   int m;
+   char buffer[OP_SIZE];
+   
    scanf("%d", &m);
    
    for (int i = 0; i < m; i++)
    {
-      do {
-         scanf(" %s", buffer);
-         if (buffer[0] == '(') {
-            //Inicio de expressão
-
-         }
-         else if (buffer[0] >= '0' && buffer[0] <= '9') {
-            // Número
-            num = atoi(buffer);
-         }
-         else  {
-            // Incógnita
-         }
-      } while (getchar() != '\n');
+      scanf(" %s", buffer);
+      if (buffer[0] == '(') {
+         // Inicio de expressão
+         p_node root = create_tree(create_data(0, EMPTY, -1), NULL, NULL);
+         root = fill_tree(root);
+         root = optmize_tree(root);
+         print_tree(root);
+         destroy_tree(root);
+      }
+      printf("\n");
    }
-   
-   
-      
-   
    return EXIT_SUCCESS;
 }
