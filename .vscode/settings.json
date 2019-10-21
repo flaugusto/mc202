@@ -5,6 +5,7 @@
         "data.h": "c",
         "stdlib.h": "c",
         "heap.h": "c",
-        "lista.h": "c"
+        "lista.h": "c",
+        "arvore.h": "c"
     }
 }
