@@ -12,3 +12,4 @@ __pycache__/
 *$py.class
 *.pdf
 *.o
+lab*/test
