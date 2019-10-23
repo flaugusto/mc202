@@ -4,8 +4,8 @@
 
 .PHONY: build clean
 
-LAB = lab07
-TEST = 04
+LAB = lab08
+TEST = 00
 
 OBJECTS = $(patsubst %.c, %.o, $(wildcard *.c))
 GFLAGS  = -std=c99 -Wall -Werror
