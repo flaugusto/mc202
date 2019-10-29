@@ -1,14 +1,13 @@
-
+# Ignore files without extension
 *
 !/**/
 !*.*
 
 # Test files (SuSy)
 arq*.*
-*.pgm
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+lab*/test*
+
+# Byte-compiled / optimized / other files
 *.pdf
 *.o
+*.out
