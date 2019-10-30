@@ -4,7 +4,7 @@
 
 .PHONY: build clean
 
-LAB = lab08
+LAB = lab09
 TEST = 01
 
 OBJECTS = $(patsubst %.c, %.o, $(wildcard *.c))
