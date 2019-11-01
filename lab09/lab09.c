@@ -2,21 +2,7 @@
 #include <stdio.h>
 
 #include "heap.h"
-
-/**
- * Retorna 1 se o valor a é menor que b
- * 0 caso contrário.
- * */
-int less_than(char* a, char* b);
-
-/**
- * Retorna 1 se o valor a é maior que b
- * 0 caso contrário.
- * */
-int greater_than(char* a, char* b);
-
-void swap_nodes(p_heap a, p_heap b);
-
+#include "tools.h"
 
 int main()
 {
@@ -30,21 +16,17 @@ int main()
       scanf("%d", &m);
       for (int j = 0; j < m; j++) {
          scanf(" %s", code);
-         p_heap max = create_heap(m, greater_than);
-         p_heap min = create_heap(m, less_than);
-         if (get_size(max) < get_size(min)) {
-            insert_heap(max, create_item(code));
+         p_heap max = create_heap(m);
+         p_heap min = create_heap(m);
+         if (get_index(max) < get_index(min)) {
+            insert_heap(max, create_item(code), gt);
          } else {
-            insert_heap(min, create_item(code));
+            insert_heap(min, create_item(code), lt);
          }
          while (peek_root(max) > peek_root(min)) {
             swap_nodes(min, max);
          }
-
       }
-      
-
-
    }
 
    return EXIT_SUCCESS;
