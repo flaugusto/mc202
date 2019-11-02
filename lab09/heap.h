@@ -1,7 +1,7 @@
 #ifndef HEAP_H
 #define HEAP_H
 
-#define MAX_LEN 10
+#define MAX_LEN 5
 
 typedef struct Item{
     char code[MAX_LEN];
@@ -9,7 +9,7 @@ typedef struct Item{
 
 Item create_item(char* code);
 
-char* get_code(Item some);
+char* get_code(Item* some);
 
 typedef struct Heap {
     Item *v;
@@ -33,5 +33,11 @@ char* peek_root(p_heap h);
 void risein_heap(p_heap h, int k, int (*cmp)(char*, char*));
 
 void fallin_heap(p_heap h, int k, int (*cmp)(char*, char*));
+
+/**
+ * Função que troca os valores de dois Item
+ * @a:
+ * */
+void swap(Item* a, Item* b);
 
 #endif
