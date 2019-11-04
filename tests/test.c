@@ -33,3 +33,14 @@ int main()
     printArr(test, 5);
     return 0;
 }
+
+/** Printa heaps **/
+void print_h(p_heap h, char* msg) {
+    printf("Heap %s: ", msg);
+    for (int i = 0; i < h->i; i++)
+    {
+        printf("v[%d]: %s ", i, h->v[i].code);
+    }
+    printf("\n");
+    
+}
