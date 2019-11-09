@@ -8,5 +8,6 @@
         "lista.h": "c",
         "arvore.h": "c",
         "io.h": "c"
-    }
+    },
+    "svn.ignoreMissingSvnWarning": true
 }
