@@ -4,7 +4,7 @@
 
 .PHONY: build clean
 
-LAB = lab09
+LAB = lab06
 TEST = 02
 
 OBJECTS = $(patsubst %.c, %.o, $(wildcard *.c))
@@ -19,15 +19,16 @@ build: $(OBJECTS)
 clean:
 	rm -f *.o
 
-test:
+test: build
 	@set -e ; \
+	echo "-----------Program output-------------"; \
 	if [ ! -d testes_abertos ] ; then \
 		echo "\033[1;31mDiretório 'testes_abertos' não encontrado!\033[0m" ; \
 		exit 1 ; \
 	fi ; \
 	./$(LAB) < testes_abertos/arq$(TEST).in ; \
 
-check:
+check: build
 	@set -e ; \
 	if [ ! -d testes_abertos ] ; then \
 		echo "\033[1;31mDiretório 'testes_abertos' não encontrado!\033[0m" ; \
