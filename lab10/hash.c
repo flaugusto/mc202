@@ -21,7 +21,7 @@ p_ht new_hash_table(int size) {
     new->set = malloc(size * sizeof(p_item));
     if (new->set == NULL) {
         printf("Nao ha memoria suficiente!\n");
-        exit(1);
+       exit(1);
     }
     for (int i = 0; i < size; i++) {
         new->set[i] = NULL;
@@ -52,9 +52,11 @@ int ht_search(p_ht table, char* key) {
 }
 
 int hash(char* key, int m) {
-    long long int x;
+    double a = (sqrt(5) - 1) / 2;
+    long double x = 0;
     for (int i = 0; i < strlen(key); i++) {
-        x = (256 * x + key[i]);
+        x = (256 * x + key[i]) * a;
+        x = x - (int)x; // mod 1
     }
-    return floor((double)(m * (((sqrt(5) - 1) / 2) * x % 1);
+    return floor(m * x);
 }
