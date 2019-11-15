@@ -43,7 +43,7 @@ void ht_insert(p_ht table, char *key, int value);
  * 1 se a chave está na tabela
  * 0 do contrário
  * */
-int ht_search(p_ht table, char*);
+int ht_search(p_ht table, char* key);
 
 /**
  * Função de hash

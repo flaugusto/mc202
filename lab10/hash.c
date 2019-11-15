@@ -1,6 +1,10 @@
 #include <stdlib.h>
+#include <string.h>
+#include <math.h>
 
 #include "hash.h"
+
+
 
 p_item create_item(char *key, int value) {
     p_item new;
@@ -35,5 +39,22 @@ void ht_insert(p_ht table, char *key, int value) {
         pos++;
     }
     table->set[pos] = create_item(key, value);
-    
+}
+
+int ht_search(p_ht table, char* key) {
+    int pos = hash(key, table->size);
+    while (table->set[pos]) {
+        if (strcmp(table->set[pos]->key, key) == 0)
+            return 1;
+        pos++;
+    }
+    return 0;
+}
+
+int hash(char* key, int m) {
+    long long int x;
+    for (int i = 0; i < strlen(key); i++) {
+        x = (256 * x + key[i]);
+    }
+    return floor((double)(m * (((sqrt(5) - 1) / 2) * x % 1);
 }
