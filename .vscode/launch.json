@@ -11,7 +11,7 @@
             "program": "${fileDirname}/${fileBasenameNoExtension}",
             "args": [
                 "<",
-                "${fileDirname}/testes_abertos/arq02.in"
+                "${fileDirname}/testes_abertos/arq01.in"
             ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

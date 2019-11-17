@@ -1,10 +1,9 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 #include <math.h>
 
 #include "hash.h"
-
-
 
 p_item create_item(char *key, int value) {
     p_item new;
@@ -18,6 +17,7 @@ p_item create_item(char *key, int value) {
 
 p_ht new_hash_table(int size) {
     p_ht new;
+    new = malloc(sizeof(p_ht));
     new->set = malloc(size * sizeof(p_item));
     if (new->set == NULL) {
         printf("Nao ha memoria suficiente!\n");
@@ -26,7 +26,6 @@ p_ht new_hash_table(int size) {
     for (int i = 0; i < size; i++) {
         new->set[i] = NULL;
     }
-    
     new->size = size;
     return new;
 }
@@ -55,7 +54,7 @@ int hash(char* key, int m) {
     double a = (sqrt(5) - 1) / 2;
     long double x = 0;
     for (int i = 0; i < strlen(key); i++) {
-        x = (256 * x + key[i]) * a;
+        x = ((256 * x + key[i]) * a) - (int)x;
         x = x - (int)x; // mod 1
     }
     return floor(m * x);
