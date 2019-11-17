@@ -3,32 +3,57 @@
 #include <string.h>
 
 int hash(char* key, int m);
+int isPrime(int n);
+int nextPrime(int n);
 
 int main() {
 
-    char a[4] = "AAAA";
-    char b[4] = "AAAC";
-    char c[4] = "SPOT";
-    char d[4] = "TAGC";
+    char word[1000];
 
-    int m = 8;
+    int m,x;
+    scanf("%d", &m);
 
+    for (int i = 0; i < m; i++)
+    {
+        scanf(" %s", word);
+        // scanf("%d", &x);
+        // printf("hash: %d\n", hash(word, nextPrime(m * 2)));
+        printf("%d: %s\n", i, word);
+        // printf("next prime: %d", nextPrime(x));
+    }
     
-    printf("%d\n", hash(a, m));
-    printf("%d\n", hash(b, m));
-    printf("%d\n", hash(c, m));
-    printf("%d\n", hash(d, m));
     return 0;
 }
 
+int nextPrime(int n) {
+    for (int i = n; i < 2 * n; ++i) {
+        if (isPrime(i))
+            return i;
+    }
+    return -1; // nunca chega aqui
+}
+/**
+ * Retorna se um número é primo (1) ou não (0)
+ * */
+int isPrime(int n) {
+    
+    if (n <= 1)
+        return 0;
 
+    // Bertrand's postulate (teorema pra achar primos)
+    for (int j = 2; j <= n / 2; j++) {
+        if ((n % j) == 0) {
+            return 0;
+        }
+    }
+    return 1;
+}
 
 int hash(char* key, int m) {
-    double a = (sqrt(5) - 1) / 2;
-    long double x = 0;
-    for (int i = 0; i < strlen(key); i++) {
-        x = (256 * x + key[i]) * a;
-        x = x - (int)x; // mod % 1
+    long int x = 0;
+    for (int i = 0; key[i] != '\0'; i++) {
+        char c = key[i];
+        x = ((x * 26) % m + (c - 'A' + 1)) % m;
     }
-    return floor(m * x);
+    return x;
 }

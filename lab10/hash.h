@@ -1,16 +1,16 @@
 #ifndef HASH_TABLE_H
 #define HASH_TABLE_H
 
-typedef struct {
-    char *key;
+typedef struct Item{
+    char key[100];
     int value;
 } Item;
 
 typedef Item* p_item;
 
-p_item create_item(char *key, int value);
+p_item new_item(char *key, int value);
 
-typedef struct {
+typedef struct HashTable{
     p_item *set;
     int size;
 } HashTable;
@@ -40,8 +40,8 @@ void ht_insert(p_ht table, char *key, int value);
  * Procura se uma determinada chave está na tabela
  * 
  * Retorno:
- * 1 se a chave está na tabela
- * 0 do contrário
+ * o valor associado se a chave está na tabela
+ * -1 do contrário
  * */
 int ht_search(p_ht table, char* key);
 
