@@ -44,3 +44,16 @@ void print_h(p_heap h, char* msg) {
     printf("\n");
     
 }
+
+void printHash(Item **arr, int n)
+{
+    int i;
+    for (i = 0; i < n; i++)
+    {
+        printf("v[%d]: ", i);
+        if (arr[i])
+            printf("{%s: %d}\n", arr[i]->key, arr[i]->value);
+        else
+            printf("NULL\n");
+    }
+}
