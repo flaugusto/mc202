@@ -74,7 +74,7 @@ int main()
 
     scanf(" %ms", &text);
 
-    /** Divide o texto em partes e procura as partes na tabela */
+    /* Divide o texto em partes e procura as partes na tabela */
     int block;
     for (int x = 0; x < s_size; x++) /* para cada tamanho */
     {

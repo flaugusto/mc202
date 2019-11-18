@@ -30,13 +30,14 @@ p_ht new_hash_table(int size)
      * Regra usada: o próximo primo maior ou igual que 2 * n.
      * */
     p_ht new;
-    int m = next_prime((size * 2));
+    int m = next_prime(size * 2);
     new = malloc(sizeof(HashTable));
     if (new == NULL)
     {
         printf("Nao ha memoria suficiente!\n");
         exit(1);
     }
+
     new->set = malloc(m * sizeof(p_item));
     if (new->set == NULL)
     {
@@ -79,6 +80,7 @@ int ht_search(p_ht table, char *key)
         p_item row = table->set[pos];
         if (strcmp(row->key, key) == 0)
             return row->value;
+            
         pos = (pos + 1) % table->size;
         if (pos == start)
             return -1;
@@ -137,8 +139,10 @@ int is_prime(int n)
     if (n <= 1)
         return 0;
 
-    // Bertrand's postulate (teorema pra achar primos)
-    // Ref: https://en.wikipedia.org/wiki/Bertrand%27s_postulate
+    /**
+     * Bertrand's postulate (teorema pra achar primos)
+     * Ref: https://en.wikipedia.org/wiki/Bertrand%27s_postulate
+     * */
     for (int j = 2; j <= n / 2; j++)
         if ((n % j) == 0)
             return 0;

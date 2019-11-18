@@ -1,8 +1,10 @@
 #ifndef HASH_TABLE_H
 #define HASH_TABLE_H
+#define MAX_LEN 100 // tamanho máximo do padrão
+
 
 typedef struct Item{
-    char key[100];
+    char key[MAX_LEN];
     int value;
 } Item;
 
