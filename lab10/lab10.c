@@ -5,23 +5,26 @@
 #include "hash.h"
 
 /**
+ * Função: Está no vetor
+ * 
  * Retorna 1 se acha x no vetor v
  * ou 0 se falso.
+ * 
+ * @x: numero a ser procurado
+ * @v: vetor de inteiros
+ * @size: tamanho do vetor
  * */
 int in_arr(int x, int *v, int size);
 
-void printArr(Item **arr, int n)
-{
-    int i;
-    for (i = 0; i < n; i++)
-    {
-        printf("v[%d]: ", i);
-        if (arr[i])
-            printf("{%s: %d}\n", arr[i]->key, arr[i]->value);
-        else
-            printf("NULL\n");
-    }
-}
+/**
+ * Função: Exibe vetor
+ * 
+ * Exibe os elementos de vetor simples de inteiros na tela
+ * 
+ * @arr: vetor
+ * @n: tamanho do vetor
+ * */
+void print_arr(int* arr, int n);
 
 int main()
 {
@@ -30,55 +33,52 @@ int main()
 
     scanf("%d", &n);
 
-    /* Afim de fazer menos pesquisas, cria um vetor para guardar tamanhos distintos */
-    int *sizes = malloc(n * sizeof(int));
-    // TODO if NULL
-    int s_size = 0;
-    p_ht table = new_hash_table(n);
-
-    for (int i = 0; i < n; i++)
-    {
-        scanf(" %ms", &pattern);
-        // printf("read: %s, hash: %d\n", pattern, hash(pattern, table->size));
-        ht_insert(table, pattern, i);
-
-        int len = strlen(pattern);
-        if (!in_arr(len, sizes, s_size))
-        {
-            sizes[s_size] = len;
-            s_size++;
-        }
-        free(pattern);
-    }
-
-    scanf(" %ms", &text);
-
-    //TODO remove this code (for tests only)
-    /* for (int j = 0; j < n; j++) {
-        // printf("Procurar padrões.\n");
-        scanf(" %ms", &pattern);
-
-        int value = ht_search(table, pattern);
-        if (value != -1)
-            printf("key: %s, value: %d\n", pattern, value);
-        else printf("não achou\n");
-
-        free(pattern);
-    } */
-
-    // printf("text: %s\n", text);
-    printArr(table->set, table->size);
-
-    /** Divide o texto em partes e procura as partes na tabela */
+    /* Contador do número de ocorrências */
     int *counter = malloc(n * sizeof(int));
     if (counter == NULL)
     {
         printf("Nao ha memoria suficiente!\n");
         exit(1);
     }
-    int block;
-    for (int x = 0; x < s_size; x++)
+
+    /** 
+     * Afim de fazer menos pesquisas na tabela, 
+     * cria um vetor para guardar tamanhos distintos.
+     * */
+    int *sizes = malloc(n * sizeof(int));
+    if (sizes == NULL)
     {
+        printf("Nao ha memoria suficiente!\n");
+        exit(1);
+    }
+    int s_size = 0;
+
+    p_ht table = new_hash_table(n);
+
+    for (int i = 0; i < n; i++)
+    {
+        scanf(" %ms", &pattern);
+        ht_insert(table, pattern, i);
+        counter[i] = 0;
+
+        // Guarda os tamanhos
+        int len = strlen(pattern);
+        if (!in_arr(len, sizes, s_size))
+        {
+            sizes[s_size] = len;
+            s_size++;
+        }
+
+        free(pattern);
+    }
+
+    scanf(" %ms", &text);
+
+    /** Divide o texto em partes e procura as partes na tabela */
+    int block;
+    for (int x = 0; x < s_size; x++) /* para cada tamanho */
+    {
+        /* Cria um vetor para guardar a parte do texto */
         block = sizes[x];
         char *part = malloc((block + 1) * sizeof(char));
         if (part == NULL)
@@ -87,24 +87,31 @@ int main()
             exit(1);
         }
 
-        for (int i = 0; i <= strlen(text) - block; i++)
+        /* Testa todos os subpadrões do tamanho do bloco */
+        int txt_len = strlen(text);
+        for (int i = 0; i <= txt_len - block; i++) /* para cada char no texto */
         {
+            /* Monta uma parte do tamanho do bloco */
             int j = 0;
             for (; j < block; j++)
                 part[j] = text[i + j];
             part[j] = '\0';
 
-            // printf("%s\n", part);
+            int value = ht_search(table, part);
+            if (value != -1)
+                counter[value]++;
         }
-
+        
         free(part);
-        // printf("-----------------------\n");
     }
 
+    /* Exibe o número de ocorrências para cada padrão */
+    print_arr(counter, n);
+    
     free(text);
     free(sizes);
+    free(counter);
     ht_destroy(table);
-    // free(counter);
 
     return EXIT_SUCCESS;
 }
@@ -115,4 +122,11 @@ int in_arr(int x, int *v, int size)
         if (x == v[i])
             return 1;
     return 0;
+}
+
+void print_arr(int* arr, int n)
+{
+    int i;
+    for (i = 0; i < n; i++)
+        printf("%d\n", arr[i]);
 }

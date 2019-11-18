@@ -45,12 +45,5 @@ void ht_insert(p_ht table, char *key, int value);
  * */
 int ht_search(p_ht table, char* key);
 
-/**
- * Função de hash
- * 
- * @key: uma chave para calcular o hash
- * @m: tamanho da tabela de hashing
- * */
-int hash(char* key, int m);
 
 #endif

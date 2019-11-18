@@ -7,6 +7,7 @@
 
 int is_prime(int n);
 int next_prime(int n);
+int hash(char *key, int m);
 
 p_item new_item(char *key, int value)
 {
@@ -63,7 +64,7 @@ void ht_insert(p_ht table, char *key, int value)
 {
     int pos = hash(key, table->size);
     while (table->set[pos])
-        pos++;
+        pos = (pos + 1) % table->size;
     
     table->set[pos] = new_item(key, value);
 }
@@ -71,13 +72,16 @@ void ht_insert(p_ht table, char *key, int value)
 int ht_search(p_ht table, char *key)
 {
     int pos = hash(key, table->size);
+    int start = pos;
 
     while (table->set[pos])
     {
         p_item row = table->set[pos];
         if (strcmp(row->key, key) == 0)
             return row->value;
-        pos++;
+        pos = (pos + 1) % table->size;
+        if (pos == start)
+            return -1;
     }
     return -1;
 }
@@ -95,6 +99,8 @@ int ht_search(p_ht table, char *key)
  * Implementação retirada de link externo
  * Referencia: https://visualgo.net/en/hashtable?slide=4-7
  * 
+ * @key: uma chave para calcular o hash
+ * @m: tamanho da tabela de hashing
  * 
  * */
 int hash(char *key, int m)
