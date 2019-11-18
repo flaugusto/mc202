@@ -119,6 +119,8 @@ int hash(char *key, int m)
 /**
  * Função que acha o próximo número primo
  * 
+ * @n: um número inteiro positivo
+ * 
  * Retorna um número primo maior ou igual ao n dado
  * */
 int next_prime(int n)
@@ -131,6 +133,8 @@ int next_prime(int n)
 
 /**
  * Função que diz se um número é primo
+ * 
+ * @n: um numero inteiro positivo
  * 
  * Retorna 1 se um número é primo ou 0 se falso.
  * */
