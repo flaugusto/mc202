@@ -19,7 +19,7 @@ int in_arr(int x, int *v, int size);
 /**
  * Função: Exibe vetor
  * 
- * Exibe os elementos de vetor simples de inteiros na tela
+ * Exibe os elementos de um vetor simples de inteiros na tela
  * 
  * @arr: vetor
  * @n: tamanho do vetor
@@ -42,7 +42,7 @@ int main()
     }
 
     /** 
-     * Afim de fazer menos pesquisas na tabela, 
+     * A fim de fazer menos pesquisas na tabela, 
      * cria um vetor para guardar tamanhos distintos.
      * */
     int *sizes = malloc(n * sizeof(int));
